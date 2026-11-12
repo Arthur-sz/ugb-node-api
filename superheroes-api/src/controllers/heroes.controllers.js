@@ -1,7 +1,7 @@
 //Descreve quais funções devem ser chamadas para cada rota
 const Hero = require("../models/Hero.js"); //importa o model Hero, para utilizar os métodos do sequelize
 
-async function list(req, res){  //Async indica que a função é assíncrona, permite usar await dentro dela (ele permite que a função espere a execução de uma promise antes de continuar) req representa a requisição feita pelo usuário, res representa a resposta que será enviada para o usuário
+async function list(req, res){  //Async indica que a função é assíncrona, permite usar await dentro dela (ele permite que a função nao precise esperar a execução de uma promise antes de continuar) req representa a requisição feita pelo usuário, res representa a resposta que será enviada para o usuário
     const movies = await Hero.findAll() //Const movies cria uma variavel para armazenar o resultado da consulta. Await aguarda a conclusão da operação assincrona. Hero.findAll(): método do Sequelize que consulta todos os registros do Model Hero.
     return res.status(200).json(movies); //Encecerra a requisição e retorna uma resposta com status 200 (OK) e o resultado da consulta em formato JSON.
 }
